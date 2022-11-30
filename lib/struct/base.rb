@@ -12,6 +12,8 @@ module Raoh
           define_attribute_method(AttributeOption.new(attr_name, attr_type, options))
         end
 
+        private
+
         def define_attribute_method(recorded_attribute)
           attributes << recorded_attribute
 

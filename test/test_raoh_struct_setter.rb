@@ -4,6 +4,33 @@ require_relative 'test_helper'
 require 'mocha/minitest'
 
 class TestRaohStructSetter < Minitest::Test
+  def test_blank
+    maxime = Sample::TestUser.new
+    maxime.first_name = 'maxime'
+    maxime.last_name = 'Désécot'
+    maxime.age = 38
+
+    assert maxime.first_name == 'maxime'
+    assert maxime.last_name == 'Désécot'
+    assert maxime.age == 38
+  end
+
+  def test_blank_loop
+    users = Array.new(10, Sample::TestUser.new)
+
+    users.each do |user|
+      user.first_name = 'maxime'
+      user.last_name = 'Désécot'
+      user.age = 38
+    end
+
+    users.each do |user|
+      assert user.first_name == 'maxime'
+      assert user.last_name == 'Désécot'
+      assert user.age == 38
+    end
+  end
+
   def test_setter
     maxime = Sample.init_maxime_user('maxime', 'Désécot', 38)
 
